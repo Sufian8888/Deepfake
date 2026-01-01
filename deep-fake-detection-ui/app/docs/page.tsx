@@ -59,7 +59,6 @@ export default function DocsPage() {
               </CardContent>
             </Card>
 
-            {/* How It Works */}
             <Card className="glass border-border/50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
