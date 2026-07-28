@@ -42,6 +42,8 @@ The framework enforces statistical verification across a 15-frame temporal sampl
 - Facial & Temporal Analysis
 - Weighted Confidence Aggregator
 - Render Comprehensive SAAS Report
+
+
 ### 1. `avg_prediction` (Average Fake Probability)
 To maximize model stability against localized compression noise, the platform computes the mean of the composite fake probabilities across all 15 frames:
 $$\text{avg\_prediction} = \frac{1}{15} \sum_{f=1}^{15} \text{Fake Probability}_f$$
@@ -77,6 +79,34 @@ $$\text{artifacts\_detected} = \text{True} \quad \text{if} \quad (\text{Suspicio
 ### Backend Infrastructure
 * **Runtime Environment:** Node.js managing decoupled async data ingestion, webhooks, and queuing layers.
 * **Monetization Architecture:** Full-stack integration with **Stripe API Hooks** executing real-time subscription validation cycles while strictly insulating underlying customer data profiles.
+
+---
+
+## 📦 Local Project Initiation
+
+Clone the repository and set up the local environment parameters to evaluate the frontend dashboard:
+
+```bash
+# Clone the repository
+git clone https://github.com
+cd deep-fake.dev
+
+# Install computational framework and server dependencies
+npm install
+
+# Instatiate environment token variables
+cp .env.example .env.local
+
+# Run the Next.js local deployment thread
+npm run dev
+```
+
+Ensure `.env.local` contains valid mock configurations for system execution:
+```env
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_mockKey123
+STRIPE_SECRET_KEY=sk_test_mockKey123
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api
+```
 
 ---
 
