@@ -1,9 +1,9 @@
-# Deep-Fake.dev: AI-Powered Synthetic Media Detection Platform
+# Deep-Fake.dev: Multi-Metric Forensic Framework for Synthetic Media Auditing
 
-An enterprise-grade, software-as-a-service (SaaS) web framework engineered to identify and audit deepfake videos. Built using **Next.js** and optimized for digital privacy forensics, the platform exposes subtle generative artifacts invisible to the human eye, serving as a critical infrastructure tool against biometric identity theft and AI-driven disinformation.
+An enterprise-grade, software-as-a-service (SaaS) web framework engineered to identify, verify, and audit deepfake videos. Built using **Next.js** and backed by a deep learning extraction architecture, the platform exposes subtle generative artifacts invisible to the human eye. This system serves as a critical infrastructure tool against biometric identity theft and AI-driven disinformation campaigns.
 
 ## 🛡️ The Core Philosophy: Privacy as a Human Right
-With the proliferation of deep learning frameworks, human biometric data (facial coordinates and vocal signatures) has become highly vulnerable to unauthorized replication. Unlike traditional security parameters, biometric identity is completely irreplaceable. `Deep-Fake.dev` addresses **Article 12 of the Universal Declaration of Human Rights (Right to Privacy)** by empowering independent watchdogs, legal entities, and activists with lightweight tools to detect illicit state surveillance, targeted defamation, and digital media manipulation.
+With the rapid progression of generative artificial intelligence, human biometric signatures (facial topologies and neural expressions) have become highly vulnerable to unauthorized replication. Unlike traditional passwords, biometric identity is completely irreplaceable. `Deep-Fake.dev` directly addresses **Article 12 of the Universal Declaration of Human Rights (Right to Privacy)** by empowering independent watchdogs, researchers, and digital rights activists with automated tools to detect structural deepfakes and non-consensual media manipulation.
 
 ---
 
@@ -14,64 +14,89 @@ With the proliferation of deep learning frameworks, human biometric data (facial
 
 ---
 
-## 📊 Computational Architecture & How It Works
+## 🧠 Core Deep Learning Detector Architecture
+
+The server-side ingestion layer utilizes a custom convolutional model mapped specifically for localized artifact forensic evaluation:
+
+1. **Model Backbone:** `convnext_tiny` framework (instantiated via `timm` repository, initialized with `pretrained=False` for isolation testing).
+2. **Input Dimensions:** $224 \times 224 \times 3$ RGB tensor array extracted via localized face-cropping algorithms.
+3. **Forensic Classification Head:** A 6-class linear output head mapped directly against the global standard benchmark sets:
+   * `['Deepfakes', 'Face2Face', 'FaceShifter', 'FaceSwap', 'NeuralTextures', 'original']`
+4. **Activation Layer:** Softmax function yielding individual class probabilities: $P(c_i)$.
+5. **Aggregated Fake Probability:** Extracted as the sum of all synthetic manipulation variants:
+   $$\text{Fake Probability} = \sum_{i=1}^{5} P(c_i) = 1 - P(\text{'original'})$$
+
+---
+
+## 📊 Computational Architecture & Forensic Scoring
+
+The framework enforces statistical verification across a 15-frame temporal sampling grid. Rather than relying on a naive binary threshold, the platform executes a 6-tier quantitative report engine:
 - User Video Upload
 - Multipart Form Processing
 - Multi-Modal Forensic Models
 - Facial & Temporal Analysis
 - Weighted Confidence Aggregator
 - Render Comprehensive SAAS Report
+### 1. `avg_prediction` (Average Fake Probability)
+To maximize model stability against localized compression noise, the platform computes the mean of the composite fake probabilities across all 15 frames:
+$$\text{avg\_prediction} = \frac{1}{15} \sum_{f=1}^{15} \text{Fake Probability}_f$$
 
+### 2. `is_deepfake` (Binary Structural Verdict)
+Converts the continuous probability matrix into a definitive system boundary using a standard midpoint decision threshold:
+$$\text{is\_deepfake} = \text{avg\_prediction} \geq 0.5$$
 
-### 1. Secure Media Processing
-* **Supported Wrappers:** Complete support for `.mp4`, `.avi`, and `.mov` media streams.
-* **Ingestion Layer:** Uploads securely process via server-side pipelines to insulate background deep-learning models from direct public access.
+### 3. `confidence_score` (Model Certainty Index)
+Expresses system certainty regarding the final verdict (whether authenticated or manipulated) as a normalized percentage:
+$$\text{confidence\_score} = \max(\text{avg\_prediction}, 1 - \text{avg\_prediction}) \times 100$$
 
-### 2. Forensic Analysis Matrix
-* **Facial Consistency & Biomarkers:** Maps irregular warp patterns, spatial anomalies, and asymmetric facial geometry common in generative adversarial models.
-* **Temporal Coherence Analysis:** Inspects sequential frame variations to catch frame-blending defects, blending boundaries, and inter-frame shimmering.
-* **Audio-Visual Interlocking:** Runs phase checking between vocal frequencies and lip-movement boundaries to detect forced synthetic audio overrides.
+### 4. `consistency_score` (Frame Uniformity Evaluation)
+Measures the predictability and variance of the model's classifications across the file, using the standard deviation ($\sigma$) of the frame matrix:
+$$\text{consistency\_score} = (1 - \sigma(\text{predictions})) \times 100$$
 
-### 3. Forensic Report Delivery
-* **Confidence Metric:** Produces a normalized output score $(0\% - 100\%)$. Scores above $85\%$ establish structural authenticity.
-* **Visual Explanations:** Pinpoints specific timestamps, frames, and pixel regions containing localized synthetic artifacts.
+### 5. `temporal_consistency` (Time-Based Smoothness Assessment)
+Punishe temporal jitter and frame-to-frame inconsistency harshly via an amplified penalty coefficient to isolate partially manipulated video fragments:
+$$\text{temporal\_consistency} = 100 - (\sigma(\text{predictions}) \times 150)$$
+
+### 6. `artifacts_detected` (Visual Abberation Threshold Flag)
+A structural boolean flag that triggers when localized spatial or temporal anomalies breach a 30% density threshold within the video pipeline:
+$$\text{artifacts\_detected} = \text{True} \quad \text{if} \quad (\text{Suspicious Frames} > 15 \times 0.3)$$
 
 ---
 
 ## 🛠️ Technology Stack & Engineering Breakdown
 
-### Frontend Architecture
-* **Framework:** Next.js (React Framework for production optimization and server-side optimization).
-* **State & Dashboards:** Modular dashboards built to render dynamic charts for tracking user access, subscription retention, and API performance.
+### Frontend Engineering
+* **Framework:** Next.js (React production platform optimizing Server-Side Rendering (SSR) for static report queries).
+* **State Management:** Tailored admin systems rendering performance vectors, system logs, and subscription metrics.
 
-### Backend & API Framework
-* **Runtime Environment:** Node.js backend infrastructure running robust asynchronous jobs.
-* **Payment Layer:** Full-stack architecture incorporating **Stripe API Hooks** to securely dispatch payments and maintain user active states without caching plaintext payment details locally.
+### Backend Infrastructure
+* **Runtime Environment:** Node.js managing decoupled async data ingestion, webhooks, and queuing layers.
+* **Monetization Architecture:** Full-stack integration with **Stripe API Hooks** executing real-time subscription validation cycles while strictly insulating underlying customer data profiles.
 
 ---
 
 ## 📦 Local Project Initiation
 
-To run the local SaaS mockup interface, clone the project infrastructure and initiate the environment files:
+Clone the repository and set up the local environment parameters to evaluate the frontend dashboard:
 
 ```bash
-# Clone the forensically aligned repository
+# Clone the forensically aligned repository repository
 git clone https://github.com
 cd deep-fake.dev
 
-# Install client and server-side development dependencies
+# Install computational framework and server dependencies
 npm install
 
-# Initialize environment tokens
+# Instatiate environment token variables
 cp .env.example .env.local
 
-# Run the localized Next.js development engine
+# Run the Next.js local deployment thread
 npm run dev
 ```
 
-Ensure your `.env.local` contains the necessary mock configurations for validation loops:
+Ensure `.env.local` contains valid mock configurations for system execution:
 ```env
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
-STRIPE_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_mockKey123
+STRIPE_SECRET_KEY=sk_test_mockKey123
 NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api
 ```
