@@ -1,6 +1,6 @@
-# Deep-Fake.dev: Multi-Metric Forensic Framework for Synthetic Media Auditing
+# AI-Based System for Detection of Manipulated Media Content (deep-fake.dev)
 
-An enterprise-grade, software-as-a-service (SaaS) web framework engineered to identify, verify, and audit deepfake videos. Built using **Next.js** and backed by a deep learning extraction architecture, the platform exposes subtle generative artifacts invisible to the human eye. This system serves as a critical infrastructure tool against biometric identity theft and AI-driven disinformation campaigns.
+An enterprise-grade, software-as-a-service (SaaS) web framework engineered as an **AI-Based System for Detection of Manipulated Media Content**. Built using **Next.js** and backed by a deep learning extraction architecture, the platform exposes subtle generative artifacts invisible to the human eye. This system serves as a critical infrastructure tool against biometric identity theft and AI-driven disinformation campaigns.
 
 ## 🛡️ The Core Philosophy: Privacy as a Human Right
 With the rapid progression of generative artificial intelligence, human biometric signatures (facial topologies and neural expressions) have become highly vulnerable to unauthorized replication. Unlike traditional passwords, biometric identity is completely irreplaceable. `Deep-Fake.dev` directly addresses **Article 12 of the Universal Declaration of Human Rights (Right to Privacy)** by empowering independent watchdogs, researchers, and digital rights activists with automated tools to detect structural deepfakes and non-consensual media manipulation.
@@ -27,6 +27,11 @@ The server-side ingestion layer utilizes a custom convolutional model mapped spe
    $$\text{Fake Probability} = \sum_{i=1}^{5} P(c_i) = 1 - P(\text{'original'})$$
 
 ---
+
+## 📊 Computational Architecture & Forensic Scoring
+
+The framework enforces statistical verification across a 15-frame temporal sampling grid. Rather than relying on a naive binary threshold, the platform executes a 6-tier quantitative report engine:
+
 
 ## 📊 Computational Architecture & Forensic Scoring
 
